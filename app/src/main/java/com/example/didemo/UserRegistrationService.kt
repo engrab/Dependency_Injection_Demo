@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 class UserRegistrationService @Inject constructor(
     private val SQLRepository: UserRepository,
-    private val emailService: NotificationService
+    @MessageQualifier private val emailService: NotificationService
 ) {
 
     fun registerUser(email: String, password: String) {
