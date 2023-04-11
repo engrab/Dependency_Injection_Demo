@@ -2,10 +2,9 @@ package com.example.didemo
 
 import dagger.Component
 
-@Component
+@Component(modules = [NotificationServiceModule::class, UserRepositoryModule::class])
 interface UserRegistrationComponent {
 
-    fun getUserRegistrationService():UserRegistrationService
-
-    fun getEmailService():EmailService
+    // inject consumer in inject method which return all method that are required to MainActivity
+    fun inject(mainActivity: MainActivity)
 }
