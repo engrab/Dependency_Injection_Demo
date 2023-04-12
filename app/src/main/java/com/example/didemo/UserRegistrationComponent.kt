@@ -2,10 +2,11 @@ package com.example.didemo
 
 import dagger.BindsInstance
 import dagger.Component
+import dagger.Subcomponent
 import javax.inject.Singleton
 
 @ActivityScope
-@Component(dependencies = [AppComponent::class], modules = [NotificationServiceModule::class, UserRepositoryModule::class])
+@Subcomponent(modules = [NotificationServiceModule::class, UserRepositoryModule::class])
 interface UserRegistrationComponent {
 
     // inject consumer in inject method which return all method that are required to MainActivity
@@ -13,8 +14,8 @@ interface UserRegistrationComponent {
 
     fun getEmailService():EmailService
 
-    @Component.Factory
+    @Subcomponent.Factory
     interface Factory{
-        fun create(@BindsInstance retryCount:Int, appComponent: AppComponent):UserRegistrationComponent
+        fun create(@BindsInstance retryCount:Int):UserRegistrationComponent
     }
 }

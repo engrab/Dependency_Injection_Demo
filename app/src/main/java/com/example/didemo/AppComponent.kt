@@ -5,5 +5,5 @@ import dagger.Component
 @Component(modules = [AnalyticsModule::class])
 interface AppComponent {
 
-    fun getAnalaytics():AnalyticsService
+    fun userRegistrationFactory():UserRegistrationComponent.Factory
 }
