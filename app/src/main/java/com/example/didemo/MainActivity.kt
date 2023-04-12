@@ -10,6 +10,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var userRegistrationService: UserRegistrationService
 
 
+    // for singlton scope you mension @Singleton on return type object and its component
+    @Inject
+    lateinit var emailService: EmailService
+
+    @Inject
+    lateinit var emailService2: EmailService
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -17,5 +25,6 @@ class MainActivity : AppCompatActivity() {
         val component = DaggerUserRegistrationComponent.factory().create(3)
        component.inject(this)// return all method with are required to MainActivity that are created by dagger
         userRegistrationService.registerUser("bilawal@gmail.com", "12345")
+
     }
 }
